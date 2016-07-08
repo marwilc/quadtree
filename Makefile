@@ -1,15 +1,15 @@
-CXXFLAGS =	-O2 -g -Wall -fmessage-length=0
+# Makefile
+CFLAGS=-c -Wall -g
 
-OBJS =		quadtree.o
+# Variables
+CC = g++
+EJECUTABLE = quadtree
 
-LIBS = nodeQ.h quadTree.h
+# Programa Principal
+all: nodeQ.h quadTree.h quadtree.cpp
+	$(CC) -g -o $(EJECUTABLE) quadtree.cpp 
 
-TARGET =	quadtree
 
-$(TARGET):	$(OBJS)
-	$(CXX) -o $(TARGET) $(OBJS) $(LIBS)
-
-all:	$(TARGET)
-
+# Borrar los Archivos Objeto y el Ejecutable
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -rf *.o $(EJECUTABLE) 

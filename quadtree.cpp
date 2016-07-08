@@ -13,6 +13,18 @@ using namespace std;
 
 //enum color { BLANCO, NEGRO, GRIS };
 
+void printList(list<QuadTree <color> > l)
+{
+	list<QuadTree <color> >:: iterator it = l.begin();
+	QuadTree<color> qt;
+	while( it != l.end())
+	{
+		qt=*it;
+		cout <<" "<<qt.getColor();
+		*it++;
+	}
+}
+
 color pintar(const char &c)
 {
 	color colour=GRIS;
@@ -31,10 +43,10 @@ color pintar(const char &c)
 			}
 	return(colour);
 }
-int main ()
+int main (int argc, char *argv[])
 {
 	list<color> lx, ly;
-
+	list<QuadTree <color> > lqt1, lqt2;
 	int cases,i;
 	char c;
 	color colour;
@@ -60,10 +72,20 @@ int main ()
 		//cout<<endl;
 		QuadTree<color> qt1(lx), qt2(ly);
 
+		lqt1=qt1.sons();
+		lqt2=qt2.sons();
+		cout<<qt1.hMax()<<endl;
+		cout<<qt2.hMax()<<endl;
+		//printList(lqt1);
+		//cout<<endl;
+		//printList(lqt2);
+		//cout<<endl;
 		//qt1.preOrderRoute();
-		cout<<"qt1 pixels black:"<<qt1.pixelsBlack()<<endl;
+		//cout<<"qt1 pixels black:"<<qt1.pixelsBlack()<<endl;
 		//qt2.preOrderRoute();
-		cout<<"qt2 pixels black:"<<qt2.pixelsBlack()<<endl;
+		//cout<<"qt2 pixels black:"<<qt2.pixelsBlack()<<endl;
+		//qt1.clear();
+		//qt2.clear();
 	}
 	return (0);
 }

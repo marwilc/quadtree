@@ -22,15 +22,15 @@ class NodeQ
 
 	public:
 		//contructores
-		NodeQ():_subTrees({NULL,NULL,NULL,NULL}){};
-		NodeQ(const T &e):_info(e), _subTrees({NULL,NULL,NULL,NULL}){};
+		NodeQ(){int i;for(i=1;i<=_MAX;i++)_subTrees[i-1]=NULL;};
+		NodeQ(const T &e){this->_info=e; int i;for(i=1;i<=_MAX;i++)this->_subTrees[i-1]=NULL;};
 		NodeQ(const T &e, NodeQ<T>* subtree[_MAX]);
 		//consultores
-		T getInfo()const{return(_info);};
-		NodeQ<T>* getSubTree(const int &pos){return(_subTrees[pos]);};
+		T getInfo()const{return(this->_info);};
+		NodeQ<T>* getSubTree(const int &pos){return(this->_subTrees[pos]);};
 		//modificadores
-		void setInfo(const T &e){_info=e;};
-		void setSubTree(NodeQ<T>* ptr, const int &pos){_subTrees[pos]=ptr;};
+		void setInfo(const T &e){this->_info=e;};
+		void setSubTree(NodeQ<T>* ptr, const int &pos){this->_subTrees[pos]=ptr;};
 
 };
 
