@@ -11,7 +11,6 @@
 
 using namespace std;
 
-//enum color { BLANCO, NEGRO, GRIS };
 
 void printList(list<QuadTree <color> > l)
 {
@@ -46,46 +45,30 @@ color pintar(const char &c)
 int main (int argc, char *argv[])
 {
 	list<color> lx, ly;
-	list<QuadTree <color> > lqt1, lqt2;
+	//list<QuadTree <color> > lqt1, lqt2;
 	int cases,i;
 	char c;
 	color colour;
 
 	cin>>cases;
 	cin.get();
-	for(i=1;i<=3;i++)
+	for(i=1;i<=cases;i++)
 	{
 		while((c=cin.get())!='\n')
 		{
-			//cout<<c;
 			colour=pintar(c);
-			//cout<<colour;
 			lx.push_back(colour);
 		}
-		//cout<<endl;
 		while((c=cin.get())!='\n')
-		{	//cout<<c;
+		{
 			colour=pintar(c);
-			//cout<<colour;
 			ly.push_back(colour);
 		}
-		//cout<<endl;
-		QuadTree<color> qt1(lx), qt2(ly);
+		QuadTree<color> qt1(lx), qt2(ly) ,qtsuma;
 
-		lqt1=qt1.sons();
-		lqt2=qt2.sons();
-		cout<<qt1.hMax()<<endl;
-		cout<<qt2.hMax()<<endl;
-		//printList(lqt1);
-		//cout<<endl;
-		//printList(lqt2);
-		//cout<<endl;
-		//qt1.preOrderRoute();
-		//cout<<"qt1 pixels black:"<<qt1.pixelsBlack()<<endl;
-		//qt2.preOrderRoute();
-		//cout<<"qt2 pixels black:"<<qt2.pixelsBlack()<<endl;
-		//qt1.clear();
-		//qt2.clear();
+		qtsuma=qt1.unionQt(qt2);
+		cout<<"Hay "<<qtsuma.pixelsBlack()<<" pixels negros."<<endl;
+
 	}
 	return (0);
 }
